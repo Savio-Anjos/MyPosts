@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3rem;
+    background-color: #64748b;
+    margin-left: 1rem;
+    margin-right: 3rem;
+    flex-wrap: wrap;
+    border-radius: 2rem;
+    overflow: auto;
+    height: 37rem;
+    margin-top: 3rem;
+}
+
+.container::-webkit-scrollbar {
+    width: 0.1em; /* Largura da barra de rolagem */
+}
+
+.card  {
+    background-color: #075985;
+    border-radius: 2rem;
+    color: #FFF;
+
+}
+
+.button {
+    background-color: #020617;
+    color: #FFF;
+}

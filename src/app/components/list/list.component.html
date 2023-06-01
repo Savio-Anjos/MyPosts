@@ -1,0 +1,16 @@
+<div class="container">
+  <ul *ngFor="let post of posts">
+    <nz-card
+      style="width: 300px"
+      nzTitle="{{ 'ID ' + post.id }}"
+      [nzExtra]="extraTemplate"
+      class="card custom-card"
+    >
+      <h4>Title: {{ post.title }}</h4>
+      <button nz-button nzType="dashed" class="button">Dashed Button</button>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <a>More</a>
+    </ng-template>
+  </ul>
+</div>
