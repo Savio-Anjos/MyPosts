@@ -6,11 +6,10 @@
       [nzExtra]="extraTemplate"
       class="card custom-card"
     >
-      <h4>Title: {{ post.title }}</h4>
-      <button nz-button nzType="dashed" class="button">Dashed Button</button>
+      <h3>{{ post.title }}</h3>
     </nz-card>
     <ng-template #extraTemplate>
-      <a>More</a>
+      <a class="link">Details</a>
     </ng-template>
   </ul>
 </div>

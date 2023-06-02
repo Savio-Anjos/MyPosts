@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     padding: 3rem;
-    background-color: #64748b;
+    background-color: #0f172a;
     margin-left: 1rem;
     margin-right: 3rem;
     flex-wrap: wrap;
@@ -14,17 +14,34 @@
 }
 
 .container::-webkit-scrollbar {
-    width: 0.1em; /* Largura da barra de rolagem */
+    width: 0.1em; 
 }
 
 .card  {
-    background-color: #075985;
+    background: rgb(37,99,235);
+    background: radial-gradient(circle, rgba(37,99,235,1) 0%, rgba(96,165,250,1) 80%);
     border-radius: 2rem;
     color: #FFF;
+    height: 13rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
 
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .button {
     background-color: #020617;
     color: #FFF;
+}
+
+.link {
+    color: #FFF;
+}
+
+.link:hover {
+    color: #000;
 }
