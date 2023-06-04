@@ -39,4 +39,20 @@ export class ListService {
       })
       .valueChanges.pipe(map((result: any) => result.data.posts.data));
   }
+
+  fetchOnePost(id: number) {
+    return this.apollo
+      .watchQuery({
+        query: gql`
+          query {
+            post(id: 1) {
+              id
+              title
+              body
+            }
+          }
+        `,
+      })
+      .valueChanges.pipe(map((result: any) => result.data.post));
+  }
 }
