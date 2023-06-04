@@ -19,9 +19,10 @@
         [nzWidth]="'600px'"
       >
         <ng-container *nzModalContent>
-          <p>Content one</p>
-          <p>Content two</p>
-          <p>Content three</p>
+          <p>{{ detailsPost.id }}</p>
+          <p>{{ detailsPost.title }}</p>
+          <p>{{ detailsPost.body }}</p>
+
           <p>Content one</p>
           <p>Content two</p>
           <p>Content three</p>
@@ -29,7 +30,11 @@
       </nz-modal>
     </nz-card>
     <ng-template #extraTemplate>
-      <a class="link" nz-button [nzType]="'primary'" (click)="showModal()"
+      <a
+        class="link"
+        nz-button
+        [nzType]="'primary'"
+        (click)="showModal(post.id)"
         >Details</a
       >
     </ng-template>

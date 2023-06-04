@@ -44,14 +44,17 @@ export class ListService {
     return this.apollo
       .watchQuery({
         query: gql`
-          query {
-            post(id: 1) {
+          query GetPost($id: ID!) {
+            post(id: $id) {
               id
               title
               body
             }
           }
         `,
+        variables: {
+          id: id.toString(),
+        },
       })
       .valueChanges.pipe(map((result: any) => result.data.post));
   }
