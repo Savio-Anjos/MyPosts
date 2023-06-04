@@ -7,9 +7,31 @@
       class="card custom-card"
     >
       <h3>{{ post.title }}</h3>
+
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Detalhes da Postagem"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+        class="modal"
+        [nzBodyStyle]="{ 'background-color': 'rgba(29,78,216,1)' }"
+        [nzWidth]="'50rem'"
+        [nzWidth]="'600px'"
+      >
+        <ng-container *nzModalContent>
+          <p>Content one</p>
+          <p>Content two</p>
+          <p>Content three</p>
+          <p>Content one</p>
+          <p>Content two</p>
+          <p>Content three</p>
+        </ng-container>
+      </nz-modal>
     </nz-card>
     <ng-template #extraTemplate>
-      <a class="link">Details</a>
+      <a class="link" nz-button [nzType]="'primary'" (click)="showModal()"
+        >Details</a
+      >
     </ng-template>
   </ul>
 </div>

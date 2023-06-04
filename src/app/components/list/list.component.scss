@@ -20,7 +20,8 @@
 .card  {
     background: rgb(37,99,235);
     background: rgb(29,78,216);
-    background: radial-gradient(circle, rgba(29,78,216,1) 0%, rgba(37,99,235,1) 80%);
+    background: rgb(29,78,216);
+    background: radial-gradient(circle, rgba(29,78,216,1) 0%, rgba(37,99,235,1) 46%);
     border-radius: 2rem;
     color: #FFF;
     height: 13rem;
@@ -41,6 +42,7 @@ h3 {
 
 .link {
     color: #FFF;
+    border-radius: 3rem;
 }
 
 .link:hover {

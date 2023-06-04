@@ -13,7 +13,8 @@ import { ListService } from 'src/app/services/list.service';
 export class ListComponent implements OnInit {
   posts: Post[] = [];
   numberInput: number = 0;
-  amountPosts: number = 12;
+  amountPosts: number = 60;
+  isVisible = false;
 
   constructor(private listService: ListService) {}
 
@@ -30,5 +31,19 @@ export class ListComponent implements OnInit {
     this.listService.fetchPosts(this.amountPosts).subscribe((posts) => {
       this.posts = posts;
     });
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 }
