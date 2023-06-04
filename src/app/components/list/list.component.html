@@ -14,14 +14,20 @@
         (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleOk()"
         class="modal"
-        [nzBodyStyle]="{ 'background-color': 'rgba(29,78,216,1)' }"
+        [nzBodyStyle]="{ 'background-color': ' rgba(37,99,235,1)' }"
         [nzWidth]="'50rem'"
         [nzWidth]="'600px'"
       >
         <ng-container *nzModalContent>
-          <h1>ID: {{ detailsPost.id }}</h1>
-          <h1>Title: {{ detailsPost.title | capitalizeFirstLetter }}</h1>
-          <h1>Content: {{ detailsPost.body | capitalizeFirstLetter }}</h1>
+          <h1><span class="categories">ID: </span>{{ detailsPost.id }}</h1>
+          <h1>
+            <span class="categories">Title: </span
+            >{{ detailsPost.title | capitalizeFirstLetter }}
+          </h1>
+          <h1>
+            <span class="categories">Content: </span
+            >{{ detailsPost.body | capitalizeFirstLetter }}
+          </h1>
         </ng-container>
       </nz-modal>
     </nz-card>
