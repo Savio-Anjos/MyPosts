@@ -6,7 +6,7 @@
       [nzExtra]="extraTemplate"
       class="card custom-card"
     >
-      <h3>{{ post.title }}</h3>
+      <h3>{{ post.title | capitalizeFirstLetter }}</h3>
 
       <nz-modal
         [(nzVisible)]="isVisible"
@@ -19,13 +19,9 @@
         [nzWidth]="'600px'"
       >
         <ng-container *nzModalContent>
-          <p>{{ detailsPost.id }}</p>
-          <p>{{ detailsPost.title }}</p>
-          <p>{{ detailsPost.body }}</p>
-
-          <p>Content one</p>
-          <p>Content two</p>
-          <p>Content three</p>
+          <h1>ID: {{ detailsPost.id }}</h1>
+          <h1>Title: {{ detailsPost.title | capitalizeFirstLetter }}</h1>
+          <h1>Content: {{ detailsPost.body | capitalizeFirstLetter }}</h1>
         </ng-container>
       </nz-modal>
     </nz-card>

@@ -18,11 +18,12 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { GraphQLModule } from './graphql.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, ListComponent],
+  declarations: [AppComponent, ListComponent, CapitalizeFirstLetterPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
