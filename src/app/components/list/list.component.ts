@@ -13,13 +13,13 @@ import { ListService } from 'src/app/services/list.service';
 export class ListComponent implements OnInit {
   posts: Post[] = [];
   idPost = 0;
-  detailsPost = {
+  detailsPost: Post = {
     id: 0,
     title: '',
     body: '',
   };
   numberInput: number = 0;
-  amountPosts: number = 60;
+  amountPosts: number = 3;
   isVisible = false;
 
   constructor(private listService: ListService) {}

@@ -40,7 +40,7 @@ export class ListService {
       .valueChanges.pipe(map((result: any) => result.data.posts.data));
   }
 
-  fetchOnePost(id: number) {
+  fetchOnePost(id: number): Observable<Post> {
     return this.apollo
       .watchQuery({
         query: gql`

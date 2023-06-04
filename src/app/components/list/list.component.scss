@@ -1,4 +1,4 @@
-.container {
+.container-cards {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -9,12 +9,30 @@
     flex-wrap: wrap;
     border-radius: 2rem;
     overflow: auto;
-    height: 37rem;
+    height: 33rem;
     margin-top: 3rem;
 }
 
-.container::-webkit-scrollbar {
+.container-cards::-webkit-scrollbar {
     width: 0.1em; 
+}
+
+.area-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+  
+   input {
+    width: 7rem;
+    height: 1.7rem;
+    background-color: #0f172a;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    border-color: #FFF;
+    padding: 1rem;
+   }
 }
 
 .card  {
@@ -24,7 +42,7 @@
     background: radial-gradient(circle, rgba(29,78,216,1) 0%, rgba(37,99,235,1) 46%);
     border-radius: 2rem;
     color: #FFF;
-    height: 13rem;
+    height: 12rem;
     margin-bottom: 2rem;
     font-weight: bold;
 
@@ -32,7 +50,7 @@
 
 h3 {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .button {
