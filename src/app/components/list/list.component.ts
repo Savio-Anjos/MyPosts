@@ -31,6 +31,7 @@ export class ListComponent implements OnInit {
   changeNumber() {
     this.amountPosts = this.numberInput;
     this.fetchPosts();
+    this.numberInput = 0;
   }
 
   fetchPosts() {

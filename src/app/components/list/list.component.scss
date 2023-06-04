@@ -4,12 +4,12 @@
     justify-content: space-around;
     padding: 3rem;
     background-color: #0f172a;
-    margin-left: 1rem;
+   
     margin-right: 3rem;
     flex-wrap: wrap;
     border-radius: 2rem;
     overflow: auto;
-    height: 33rem;
+    height: 34rem;
     margin-top: 3rem;
 }
 
@@ -19,7 +19,9 @@
 
 .area-title {
     display: flex;
+    flex-direction: column;
     align-items: center;
+   
     justify-content: center;
     color: #FFF;
   
@@ -33,6 +35,21 @@
     border-color: #FFF;
     padding: 1rem;
    }
+
+   button {
+    background: rgb(37,99,235);
+    background: rgb(29,78,216);
+    background: rgb(29,78,216);
+    background: radial-gradient(circle, rgba(29,78,216,1) 0%, rgba(37,99,235,1) 46%);
+    font-size: 1.1rem;
+    border-radius: 2rem;
+   }
+}
+
+.area-form {
+    display: flex;
+    align-items: center;
+   
 }
 
 .card  {
