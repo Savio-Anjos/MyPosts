@@ -10,7 +10,7 @@ import { Post } from 'src/app/Post';
 export class ListPostUserService {
   constructor(private apollo: Apollo) {}
 
-  fetchPostUser(): Observable<Post[]> {
+  fetchPostsUser(): Observable<Post[]> {
     return this.apollo
       .watchQuery({
         query: gql`
