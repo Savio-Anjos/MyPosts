@@ -18,18 +18,23 @@ export class ListPostsUserComponent {
     private listPostUserService: ListPostUserService
   ) {}
 
+  ngOnInit() {
+    this.fetchPostsUser(Number(this.currentUser?.id));
+  }
+
   get currentUser(): User | null {
     this.user = this.userStateService.getCurrentUser();
     return this.user;
   }
 
-  ngOnInit() {
-    this.fetchPostsUser();
-  }
-
-  fetchPostsUser() {
-    this.listPostUserService.fetchPostsUser().subscribe((posts) => {
+  fetchPostsUser(id: number) {
+    this.listPostUserService.fetchPostsUser(id).subscribe((posts) => {
       this.postsUser = posts;
     });
+  }
+
+  teste() {
+    console.log(this.currentUser?.id);
+    this.fetchPostsUser(Number(this.currentUser?.id));
   }
 }

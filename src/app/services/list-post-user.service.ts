@@ -10,12 +10,12 @@ import { Post } from 'src/app/Post';
 export class ListPostUserService {
   constructor(private apollo: Apollo) {}
 
-  fetchPostsUser(): Observable<Post[]> {
+  fetchPostsUser(id: number): Observable<Post[]> {
     return this.apollo
       .watchQuery({
         query: gql`
-          query {
-            user(id: 1) {
+          query GetPostsUser($id: ID!) {
+            user(id: $id) {
               posts {
                 data {
                   id
@@ -25,6 +25,9 @@ export class ListPostUserService {
             }
           }
         `,
+        variables: {
+          id: id.toString(),
+        },
       })
       .valueChanges.pipe(map((result: any) => result.data.user.posts.data));
   }
