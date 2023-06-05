@@ -1,18 +1,13 @@
 <div class="container">
-  <button (click)="teste()">Buscar posts</button>
-  <!--
   <div class="area-title">
-    
-    <h2>Quantas publicações você deseja visializar?</h2>
+    <h2>Clique aqui para visualizar as publicações do usuário conectado:</h2>
     <div class="area-form">
-      <input type="number" [(ngModel)]="numberInput" name="numberInput" />
-      <button nz-button nzType="primary" (click)="changeNumber()">
+      <button nz-button nzType="primary" (click)="showPosts()">
         Show Posts
       </button>
     </div>
-  
   </div>
-    -->
+
   <div class="container-cards">
     <ul *ngFor="let post of postsUser">
       <nz-card
@@ -22,7 +17,7 @@
         class="card"
       >
         <h3>{{ post.title | capitalizeFirstLetter }}</h3>
-        <!--
+
         <nz-modal
           [(nzVisible)]="isVisible"
           nzTitle="Detalhes da Postagem"
@@ -45,12 +40,8 @@
             </h1>
           </ng-container>
         </nz-modal>
-        -->
       </nz-card>
       <ng-template #extraTemplate>
-        <a class="link" nz-button [nzType]="'primary'">Details</a>
-
-        <!--
         <a
           class="link"
           nz-button
@@ -58,7 +49,6 @@
           (click)="showModal(post.id)"
           >Details</a
         >
-        -->
       </ng-template>
     </ul>
   </div>

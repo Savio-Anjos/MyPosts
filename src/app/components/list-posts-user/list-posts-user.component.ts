@@ -3,6 +3,7 @@ import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-list-posts-user',
@@ -15,10 +16,17 @@ import { ListPostUserService } from 'src/app/services/list-post-user.service';
 export class ListPostsUserComponent {
   user?: User | null;
   postsUser: Post[] = [];
+  detailsPost: Post = {
+    id: 0,
+    title: '',
+    body: '',
+  };
+  isVisible = false;
 
   constructor(
     private userStateService: UserStateService,
-    private listPostUserService: ListPostUserService
+    private listPostUserService: ListPostUserService,
+    private listService: ListService
   ) {}
 
   ngOnInit() {
@@ -36,8 +44,27 @@ export class ListPostsUserComponent {
     });
   }
 
-  teste() {
-    console.log(this.currentUser?.id);
+  fetchOnePost(id: number) {
+    this.listService.fetchOnePost(id).subscribe((post) => {
+      this.detailsPost = post;
+    });
+  }
+
+  showPosts() {
     this.fetchPostsUser(Number(this.currentUser?.id));
+  }
+
+  showModal(id: number): void {
+    this.fetchOnePost(id);
+    this.isVisible = true;
+  }
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 }
