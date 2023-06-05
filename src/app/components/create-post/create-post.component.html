@@ -1,20 +1,34 @@
 <div class="container">
   <div class="container-form">
-    <form>
+    <form (ngSubmit)="submit()" [formGroup]="postForm" #formDir="ngForm">
       <h2>Digite os dados da publicação:</h2>
-      <label for="title">Title</label>
+      <label for="title">Title:</label>
       <input
         type="text"
         id="title"
         placeholder="Digite o título da sua publicação"
+        formControlName="title"
+        required
       />
 
-      <label for="body">Body</label>
+      <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="title.errors?.['required']">O título é obrigatório!</p>
+      </div>
+
+      <label for="body">Body:</label>
       <textarea
         type="text"
         id="body"
-        placeholder="Digite o conteudo da sua publicação"
+        placeholder="Digite o conteúdo da sua publicação"
+        formControlName="body"
+        required
       ></textarea>
+
+      <div *ngIf="body.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="body.errors?.['required']">O conteúdo é obrigatório!</p>
+      </div>
+
+      <button nz-button nzType="primary">Primary Button</button>
     </form>
   </div>
 </div>
