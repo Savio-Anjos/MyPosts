@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from './shared/user.service';
 import { User } from 'src/app/User';
+import { UserStateService } from './shared/user-state.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
 
   constructor(
     private userService: UserService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private userStateService: UserStateService
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class AppComponent {
   fetchUser(id: number) {
     this.userService.fetchUser(id).subscribe((user) => {
       this.user = user;
+      this.userStateService.setCurrentUser(user);
       this.cdr.detectChanges();
     });
   }
