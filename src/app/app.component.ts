@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from './shared/user.service';
 import { User } from 'src/app/User';
 
@@ -15,7 +15,10 @@ export class AppComponent {
     email: '',
   };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.fetchUser();
@@ -25,6 +28,7 @@ export class AppComponent {
     this.userService.fetchUser().subscribe((user) => {
       this.user = user;
       console.log(this.user);
+      this.cdr.detectChanges();
     });
   }
 }

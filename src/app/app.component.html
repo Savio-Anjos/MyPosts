@@ -7,13 +7,13 @@
     [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null"
   >
-    <div class="sidebar-logo">
-      <a target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
-        <h1>{{ user.username }}</h1>
-        <h1>{{ user.email }}</h1>
-      </a>
+    <div class="sidebar-logo"></div>
+    <div class="header-user">
+      <h3>Name - {{ user.username }}</h3>
+      <h3>Email - {{ user.email }}</h3>
+      <span nz-icon nzType="redo" nzTheme="outline" class="icon-reload"></span>
     </div>
+
     <ul
       nz-menu
       nzTheme="dark"

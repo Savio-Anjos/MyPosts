@@ -78,3 +78,40 @@ nz-content {
   background: #fff;
   height: 100%;
 }
+
+.icon-reload {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.icon-reload:hover {
+  color: #1890ff;
+  animation: spin 2s infinite linear;
+}
+
+.header-user {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+  h3 { 
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+    margin-bottom: 1rem;
+   
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+
+}

@@ -20,6 +20,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { GraphQLModule } from './graphql.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(en);
 
@@ -38,6 +39,7 @@ registerLocaleData(en);
     NzButtonModule,
     GraphQLModule,
     NzModalModule,
+    NzIconModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
