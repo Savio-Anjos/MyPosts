@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
+import { PostUserComponent } from './components/post-user/post-user.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -25,7 +26,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, CapitalizeFirstLetterPipe],
+  declarations: [
+    AppComponent,
+    ListComponent,
+    CapitalizeFirstLetterPipe,
+    PostUserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
