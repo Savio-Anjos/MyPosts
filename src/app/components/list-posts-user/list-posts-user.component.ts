@@ -7,7 +7,10 @@ import { ListPostUserService } from 'src/app/services/list-post-user.service';
 @Component({
   selector: 'app-list-posts-user',
   templateUrl: './list-posts-user.component.html',
-  styleUrls: ['./list-posts-user.component.scss'],
+  styleUrls: [
+    './list-posts-user.component.scss',
+    '../list/list.component.scss',
+  ],
 })
 export class ListPostsUserComponent {
   user?: User | null;
