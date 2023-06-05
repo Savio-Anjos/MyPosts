@@ -1,4 +1,65 @@
-<ul *ngFor="let post of postsUser">
-  <li>{{ post.title }}</li>
-</ul>
-<button (click)="teste()">teste</button>
+<div class="container">
+  <button (click)="teste()">Buscar posts</button>
+  <!--
+  <div class="area-title">
+    
+    <h2>Quantas publicações você deseja visializar?</h2>
+    <div class="area-form">
+      <input type="number" [(ngModel)]="numberInput" name="numberInput" />
+      <button nz-button nzType="primary" (click)="changeNumber()">
+        Show Posts
+      </button>
+    </div>
+  
+  </div>
+    -->
+  <div class="container-cards">
+    <ul *ngFor="let post of postsUser">
+      <nz-card
+        style="width: 300px"
+        nzTitle="{{ 'ID ' + post.id }}"
+        [nzExtra]="extraTemplate"
+        class="card"
+      >
+        <h3>{{ post.title | capitalizeFirstLetter }}</h3>
+        <!--
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle="Detalhes da Postagem"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+          class="modal"
+          [nzBodyStyle]="{ 'background-color': ' rgba(37,99,235,1)' }"
+          [nzWidth]="'50rem'"
+          [nzWidth]="'600px'"
+        >
+          <ng-container *nzModalContent>
+            <h1><span class="categories">ID: </span>{{ detailsPost.id }}</h1>
+            <h1>
+              <span class="categories">Title: </span
+              >{{ detailsPost.title | capitalizeFirstLetter }}
+            </h1>
+            <h1>
+              <span class="categories">Content: </span
+              >{{ detailsPost.body | capitalizeFirstLetter }}
+            </h1>
+          </ng-container>
+        </nz-modal>
+        -->
+      </nz-card>
+      <ng-template #extraTemplate>
+        <a class="link" nz-button [nzType]="'primary'">Details</a>
+
+        <!--
+        <a
+          class="link"
+          nz-button
+          [nzType]="'primary'"
+          (click)="showModal(post.id)"
+          >Details</a
+        >
+        -->
+      </ng-template>
+    </ul>
+  </div>
+</div>
