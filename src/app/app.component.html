@@ -14,10 +14,10 @@
       <h3>Clique para alterar usuário:</h3>
       <span
         nz-icon
-        nzType="redo"
+        nzType="user-switch"
         nzTheme="outline"
-        class="icon-reload"
         (click)="randomId()"
+        class="icon-reload"
       ></span>
     </div>
 
@@ -40,10 +40,10 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Modify Posts" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink="/welcome/createPosts">Create Posts</a>
           </li>
         </ul>
       </li>

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { ListPostsUserComponent } from './components/list-posts-user/list-posts-user.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -22,6 +23,7 @@ import { GraphQLModule } from './graphql.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 registerLocaleData(en);
 
@@ -31,6 +33,7 @@ registerLocaleData(en);
     ListComponent,
     CapitalizeFirstLetterPipe,
     ListPostsUserComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ registerLocaleData(en);
     GraphQLModule,
     NzModalModule,
     NzIconModule,
+    NzInputModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

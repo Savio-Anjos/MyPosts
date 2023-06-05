@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome.component';
 import { ListComponent } from 'src/app/components/list/list.component';
 import { ListPostsUserComponent } from 'src/app/components/list-posts-user/list-posts-user.component';
+import { CreatePostComponent } from 'src/app/components/create-post/create-post.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'list', component: ListComponent },
   { path: 'userPosts', component: ListPostsUserComponent },
+  { path: 'createPosts', component: CreatePostComponent },
 ];
 
 @NgModule({
