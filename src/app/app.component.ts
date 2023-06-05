@@ -11,7 +11,7 @@ export class AppComponent {
   isCollapsed = false;
   user: User = {
     id: '',
-    name: '',
+    username: '',
     email: '',
   };
 
