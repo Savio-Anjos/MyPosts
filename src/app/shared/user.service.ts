@@ -10,18 +10,21 @@ import { User } from 'src/app/User';
 export class UserService {
   constructor(private apollo: Apollo) {}
 
-  fetchUser(): Observable<User> {
+  fetchUser(id: number): Observable<User> {
     return this.apollo
       .watchQuery({
         query: gql`
-          query {
-            user(id: 1) {
+          query GetUser($id: ID!) {
+            user(id: $id) {
               id
               username
               email
             }
           }
         `,
+        variables: {
+          id: id.toString(),
+        },
       })
       .valueChanges.pipe(map((result: any) => result.data.user));
   }

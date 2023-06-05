@@ -11,7 +11,14 @@
     <div class="header-user">
       <h3>Name - {{ user.username }}</h3>
       <h3>Email - {{ user.email }}</h3>
-      <span nz-icon nzType="redo" nzTheme="outline" class="icon-reload"></span>
+      <h3>Clique para alterar usuário:</h3>
+      <span
+        nz-icon
+        nzType="redo"
+        nzTheme="outline"
+        class="icon-reload"
+        (click)="randomId()"
+      ></span>
     </div>
 
     <ul

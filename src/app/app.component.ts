@@ -15,19 +15,25 @@ export class AppComponent {
     email: '',
   };
 
+  userId: number = 1;
+
   constructor(
     private userService: UserService,
     private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.fetchUser();
+    this.fetchUser(this.userId);
   }
 
-  fetchUser() {
-    this.userService.fetchUser().subscribe((user) => {
+  randomId() {
+    this.userId = Math.floor(Math.random() * 10) + 1;
+    this.fetchUser(this.userId);
+  }
+
+  fetchUser(id: number) {
+    this.userService.fetchUser(id).subscribe((user) => {
       this.user = user;
-      console.log(this.user);
       this.cdr.detectChanges();
     });
   }
