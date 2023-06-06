@@ -35,15 +35,32 @@
           [nzAction]="actionTemplate1"
         ></nz-alert>
         <ng-template #actionTemplate1>
-          <button
-            nz-button
-            nzSize="small"
-            nzType="text"
-            (click)="doAction('undo')"
-          >
+          <button nz-button nzSize="small" nzType="text" (click)="showModal()">
             Ver Publicação
           </button></ng-template
         >
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle="Detalhes da Postagem"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+          class="modal"
+          [nzBodyStyle]="{ 'background-color': ' rgba(37,99,235,1)' }"
+          [nzWidth]="'50rem'"
+          [nzWidth]="'600px'"
+        >
+          <ng-container *nzModalContent>
+            <h1><span class="categories">ID: </span>{{ postCreated.id }}</h1>
+            <h1>
+              <span class="categories">Title: </span
+              >{{ postCreated.title | capitalizeFirstLetter }}
+            </h1>
+            <h1>
+              <span class="categories">Content: </span
+              >{{ postCreated.body | capitalizeFirstLetter }}
+            </h1>
+          </ng-container>
+        </nz-modal>
       </div>
 
       <div class="alert" *ngIf="alertError">
@@ -53,7 +70,8 @@
           nzMessage="Erro ao criar Publicação"
           [nzDescription]="descriptionTemplate1"
           [nzAction]="actionTemplate2"
-        ></nz-alert>
+        >
+        </nz-alert>
         <ng-template #descriptionTemplate1>
           <p>Houve um erro ao criar a publicação! Por favor tente novamente.</p>
         </ng-template>

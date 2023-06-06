@@ -27,6 +27,7 @@ export class CreatePostComponent {
 
   alertSucess: boolean = false;
   alertError: boolean = false;
+  isVisible = false;
 
   constructor(private createPostService: CreatePostService) {}
 
@@ -68,5 +69,18 @@ export class CreatePostComponent {
         this.alertError = true;
       }
     );
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 }
