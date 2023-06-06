@@ -1,9 +1,10 @@
 <div class="container">
   <div class="container-form">
     <form (ngSubmit)="submit()" [formGroup]="postForm" #formDir="ngForm">
-      <h2>Digite os dados da publicação:</h2>
-      <label for="title">Title:</label>
+      <h2 *ngIf="!buttonNewPost">Digite os dados da publicação:</h2>
+      <label *ngIf="!buttonNewPost" for="title">Title:</label>
       <input
+        *ngIf="!buttonNewPost"
         type="text"
         id="title"
         placeholder="Digite o título da sua publicação"
@@ -11,12 +12,19 @@
         required
       />
 
-      <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+      <div
+        *ngIf="title.invalid && formDir.submitted && !alertSucess"
+        class="validation-error"
+      >
         <p *ngIf="title.errors?.['required']">O título é obrigatório!</p>
+        <p *ngIf="title.errors?.['minlength']">
+          O título deve conter no mínimo 5 caracteres!
+        </p>
       </div>
 
-      <label for="body">Body:</label>
+      <label *ngIf="!buttonNewPost" for="body">Body:</label>
       <textarea
+        *ngIf="!buttonNewPost"
         type="text"
         id="body"
         placeholder="Digite o conteúdo da sua publicação"
@@ -24,8 +32,14 @@
         required
       ></textarea>
 
-      <div *ngIf="body.invalid && formDir.submitted" class="validation-error">
+      <div
+        *ngIf="body.invalid && formDir.submitted && !alertSucess"
+        class="validation-error"
+      >
         <p *ngIf="body.errors?.['required']">O conteúdo é obrigatório!</p>
+        <p *ngIf="body.errors?.['minlength']">
+          O conteúdo deve conter no mínimo 10 caracteres!
+        </p>
       </div>
       <div class="alert" *ngIf="alertSucess">
         <nz-alert
@@ -78,7 +92,19 @@
         <ng-template #actionTemplate2> </ng-template>
       </div>
 
-      <button nz-button nzType="primary">Primary Button</button>
+      <button *ngIf="!buttonNewPost" nz-button nzType="primary">
+        Criar Publicação
+      </button>
+
+      <button
+        *ngIf="buttonNewPost"
+        nz-button
+        nzType="primary"
+        class="button-new-post"
+        (click)="changeButtonSubmit()"
+      >
+        Nova Publicação
+      </button>
     </form>
   </div>
 </div>

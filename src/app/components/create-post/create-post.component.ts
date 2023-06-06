@@ -21,20 +21,24 @@ export class CreatePostComponent {
     body: '',
   };
 
-  doAction(action: string): void {
-    console.log(`Do alert's action: ${action}`);
-  }
-
   alertSucess: boolean = false;
   alertError: boolean = false;
   isVisible = false;
+
+  buttonNewPost: boolean = false;
 
   constructor(private createPostService: CreatePostService) {}
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      body: new FormControl('', [Validators.required]),
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+      body: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
     });
   }
 
@@ -63,6 +67,9 @@ export class CreatePostComponent {
         this.postCreated = response.data.createPost;
         console.log('Post criado:', this.postCreated);
         this.alertSucess = true;
+        this.alertError = false;
+        this.buttonNewPost = true;
+        this.postForm.reset();
       },
       (error: ApolloError) => {
         console.log('Erro ao criar post:', error);
@@ -82,5 +89,10 @@ export class CreatePostComponent {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  changeButtonSubmit() {
+    this.alertSucess = false;
+    this.buttonNewPost = false;
   }
 }
