@@ -27,6 +27,38 @@
       <div *ngIf="body.invalid && formDir.submitted" class="validation-error">
         <p *ngIf="body.errors?.['required']">O conteúdo é obrigatório!</p>
       </div>
+      <div class="alert" *ngIf="alertSucess">
+        <nz-alert
+          nzShowIcon
+          nzType="success"
+          nzMessage="Publicação criada com sucesso"
+          [nzAction]="actionTemplate1"
+        ></nz-alert>
+        <ng-template #actionTemplate1>
+          <button
+            nz-button
+            nzSize="small"
+            nzType="text"
+            (click)="doAction('undo')"
+          >
+            Ver Publicação
+          </button></ng-template
+        >
+      </div>
+
+      <div class="alert" *ngIf="alertError">
+        <nz-alert
+          nzShowIcon
+          nzType="error"
+          nzMessage="Erro ao criar Publicação"
+          [nzDescription]="descriptionTemplate1"
+          [nzAction]="actionTemplate2"
+        ></nz-alert>
+        <ng-template #descriptionTemplate1>
+          <p>Houve um erro ao criar a publicação! Por favor tente novamente.</p>
+        </ng-template>
+        <ng-template #actionTemplate2> </ng-template>
+      </div>
 
       <button nz-button nzType="primary">Primary Button</button>
     </form>
