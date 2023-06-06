@@ -1,0 +1,55 @@
+.container {
+
+    display: flex;
+    height: 42rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f172a;
+    border-radius: 3rem;
+    font-size: 1.4rem;
+    color: #FFF;
+
+    h2 {
+        color: #FFF;
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    input, textarea, select {
+        width: 35rem;
+        padding: 0.3rem;
+        padding-inline: 0.8rem;
+        background-color: #0f172a;
+        border: 0.18rem solid #e2e8f0;
+        border-radius: 0.4rem;   
+    }
+
+    select {
+        margin-block: 1rem;
+    }
+
+    label {
+        margin-top: 0.5rem;
+    }
+
+    button {
+        margin-top: 3rem;
+        height: 3.0rem;
+        font-size: 1.4rem;
+        border-radius: 0.4rem;   
+    }
+
+    button:hover {
+        opacity: 0.8 ;
+    }
+
+}
+
+.container-form form {
+    border: 1px solid #e2e8f0;
+    border-radius: 2rem;;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    max-height: 40rem;      
+}

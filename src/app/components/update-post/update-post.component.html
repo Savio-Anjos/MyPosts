@@ -1,18 +1,35 @@
 <div class="container">
   <div class="container-form">
     <form>
+      <label for="posts">Selecione a postagem que deseja atualizar:</label>
+
+      <select id="posts">
+        <option value="1">Publicação 1</option>
+        <option value="2">Publicação 2</option>
+        <option value="3">Publicação 3</option>
+        <option value="4">Publicação 4</option>
+        <option value="1">Publicação 1</option>
+        <option value="2">Publicação 2</option>
+        <option value="3">Publicação 3</option>
+        <option value="4">Publicação 4</option>
+        <option value="1">Publicação 1</option>
+        <option value="2">Publicação 2</option>
+        <option value="3">Publicação 3</option>
+        <option value="4">Publicação 4</option>
+      </select>
+
       <h2>Digite os dados da publicação:</h2>
 
       <label for="body">Body:</label>
       <textarea
         type="text"
         id="body"
-        placeholder="Digite o conteúdo da sua publicação"
+        placeholder="Digite o novo conteúdo da sua publicação"
         formControlName="body"
         required
       ></textarea>
 
-      <button nz-button nzType="primary">Criar Publicação</button>
+      <button nz-button nzType="primary">Atualizar Publicação</button>
     </form>
   </div>
 </div>
