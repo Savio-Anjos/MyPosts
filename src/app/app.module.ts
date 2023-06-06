@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { ListPostsUserComponent } from './components/list-posts-user/list-posts-user.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { UpdatePostComponent } from './components/update-post/update-post.component';
+
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -35,6 +37,7 @@ registerLocaleData(en);
     CapitalizeFirstLetterPipe,
     ListPostsUserComponent,
     CreatePostComponent,
+    UpdatePostComponent,
   ],
   imports: [
     BrowserModule,
