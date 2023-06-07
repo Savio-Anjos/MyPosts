@@ -4,18 +4,9 @@
       <label for="posts">Selecione a postagem que deseja atualizar:</label>
 
       <select id="posts" formControlName="post">
-        <option value="1">Publicação 1</option>
-        <option value="2">Publicação 2</option>
-        <option value="3">Publicação 3</option>
-        <option value="4">Publicação 4</option>
-        <option value="1">Publicação 1</option>
-        <option value="2">Publicação 2</option>
-        <option value="3">Publicação 3</option>
-        <option value="4">Publicação 4</option>
-        <option value="1">Publicação 1</option>
-        <option value="2">Publicação 2</option>
-        <option value="3">Publicação 3</option>
-        <option value="4">Publicação 4</option>
+        <option *ngFor="let post of postsUser" value="post.id">
+          {{ post.title | capitalizeFirstLetter }}
+        </option>
       </select>
 
       <div *ngIf="post.invalid && formDir.submitted" class="validation-error">
