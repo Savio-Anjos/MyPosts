@@ -1,9 +1,9 @@
 <div class="container">
   <div class="container-form">
-    <form>
+    <form (ngSubmit)="submit()" [formGroup]="updateForm" #formDir="ngForm">
       <label for="posts">Selecione a postagem que deseja atualizar:</label>
 
-      <select id="posts">
+      <select id="posts" formControlName="post">
         <option value="1">Publicação 1</option>
         <option value="2">Publicação 2</option>
         <option value="3">Publicação 3</option>
@@ -18,6 +18,12 @@
         <option value="4">Publicação 4</option>
       </select>
 
+      <div *ngIf="post.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="post.errors?.['required']">
+          Por favor selecione uma postagem para editar.
+        </p>
+      </div>
+
       <h2>Digite os dados da publicação:</h2>
 
       <label for="body">Body:</label>
@@ -28,6 +34,10 @@
         formControlName="body"
         required
       ></textarea>
+
+      <div *ngIf="body.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="body.errors?.['required']">O novo conteúdo é obrigatório!</p>
+      </div>
 
       <button nz-button nzType="primary">Atualizar Publicação</button>
     </form>
