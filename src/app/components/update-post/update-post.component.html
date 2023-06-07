@@ -3,8 +3,8 @@
     <form (ngSubmit)="submit()" [formGroup]="updateForm" #formDir="ngForm">
       <label for="posts">Selecione a postagem que deseja atualizar:</label>
 
-      <select id="posts" formControlName="post">
-        <option *ngFor="let post of postsUser" value="post.id">
+      <select id="posts" formControlName="post" (change)="searchPostId($event)">
+        <option *ngFor="let post of postsUser" value="{{ post.id }}">
           {{ post.title | capitalizeFirstLetter }}
         </option>
       </select>

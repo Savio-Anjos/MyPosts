@@ -1,29 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Apollo, MutationResult } from 'apollo-angular';
-import { gql } from 'apollo-angular';
-import { Post } from '../Post';
+import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+interface UpdatePostResponse {
+  id: number;
+  body: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class UpdatePostService {
   constructor(private apollo: Apollo) {}
-  updatePost(id: any, input: any): Observable<MutationResult<Post>> {
+
+  updatePost(id: number, body: string): Observable<any> {
     const mutation = gql`
-      mutation ($id: ID!, $input: UpdatePostInput!) {
+      mutation UpdatePost($id: ID!, $input: UpdatePostInput!) {
         updatePost(id: $id, input: $input) {
           id
           body
         }
       }
     `;
-    return this.apollo.mutate<Post>({
-      mutation,
-      variables: {
-        id,
-        input,
-      },
-    });
+
+    return this.apollo
+      .mutate<UpdatePostResponse>({
+        mutation,
+        variables: {
+          id,
+          input: {
+            body,
+          },
+        },
+      })
+      .pipe(map((result) => result.data));
   }
 }

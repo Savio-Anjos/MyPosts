@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApolloError } from '@apollo/client/core';
+
 import { UserService } from 'src/app/shared/user.service';
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
+import { UpdatePostService } from 'src/app/services/update-post.service';
+
 import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
 
@@ -16,10 +20,21 @@ export class UpdatePostComponent {
   user?: User | null;
   postsUser: Post[] = [];
 
+  updatedPost: Post = {
+    id: 0,
+    title: '',
+    body: '',
+  };
+
+  postId: number = 0;
+
+  error?: string;
+
   constructor(
     private userService: UserService,
     private userStateService: UserStateService,
-    private listPostUserService: ListPostUserService
+    private listPostUserService: ListPostUserService,
+    private updatePostService: UpdatePostService
   ) {}
 
   ngOnInit(): void {
@@ -49,11 +64,28 @@ export class UpdatePostComponent {
     });
   }
 
+  searchPostId(event: any) {
+    const value = event.target.value;
+    this.postId = Number(value);
+  }
+
   submit() {
     if (this.updateForm.invalid) {
       return;
     }
 
-    console.log('Formulário enviado');
+    const postId = this.postId;
+    const body = this.updateForm.get('body')!.value;
+
+    this.updatePostService.updatePost(postId, body).subscribe(
+      (result) => {
+        this.updatedPost = result.updatePost;
+        console.log('Post atualizado:', this.updatedPost);
+      },
+      (error: ApolloError) => {
+        this.error = error.message;
+        console.error('Erro ao atualizar o post:', error);
+      }
+    );
   }
 }
