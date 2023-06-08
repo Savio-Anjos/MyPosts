@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="container-form">
+    <form (ngSubmit)="submit()" [formGroup]="deleteForm" #formDir="ngForm">
+      <label *ngIf="!buttonNewPost" for="posts"
+        >Selecione a postagem que deseja deletar:</label
+      >
+
+      <select *ngIf="!buttonNewPost" id="posts" formControlName="post">
+        <option value="1">Teste</option>
+      </select>
+
+      <div
+        *ngIf="post?.invalid && formDir.submitted && !alertSucess"
+        class="validation-error"
+      >
+        <p *ngIf="post?.errors?.['required']">
+          Por favor selecione uma postagem para deletar.
+        </p>
+      </div>
+
+      <div class="alert" *ngIf="alertSucess">
+        <nz-alert
+          style="height: 10re[]"
+          nzShowIcon
+          nzType="success"
+          nzMessage="Publicação deletada com sucesso"
+          [nzAction]="actionTemplate1"
+        ></nz-alert>
+        <ng-template #actionTemplate1> </ng-template>
+      </div>
+
+      <div class="alert" *ngIf="alertError">
+        <nz-alert
+          nzShowIcon
+          nzType="error"
+          nzMessage="Erro ao deletar Publicação"
+          [nzDescription]="descriptionTemplate1"
+          [nzAction]="actionTemplate2"
+        >
+        </nz-alert>
+        <ng-template #descriptionTemplate1>
+          <p>
+            Houve um erro ao atualizar a publicação! Por favor tente novamente.
+          </p>
+        </ng-template>
+        <ng-template #actionTemplate2> </ng-template>
+      </div>
+
+      <button
+        *ngIf="!buttonNewPost"
+        nz-button
+        nzType="primary"
+        class="button-delete"
+      >
+        {{ textButton | titlecase }}
+      </button>
+
+      <button
+        *ngIf="buttonNewPost"
+        nz-button
+        nzType="primary"
+        class="button-new-post"
+        (click)="changeButtonSubmit()"
+      >
+        {{ textButton | titlecase }}
+      </button>
+    </form>
+  </div>
+</div>
