@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApolloError } from '@apollo/client/core';
+import { Subscription } from 'rxjs';
 
 import { UserService } from 'src/app/shared/user.service';
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
 import { UpdatePostService } from 'src/app/services/update-post.service';
+import { UserUpdateService } from 'src/app/shared/user-update.service';
 
 import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
@@ -15,7 +17,7 @@ import { Post } from 'src/app/Post';
   templateUrl: './update-post.component.html',
   styleUrls: ['./update-post.component.scss'],
 })
-export class UpdatePostComponent {
+export class UpdatePostComponent implements OnInit, OnDestroy {
   updateForm!: FormGroup;
   user?: User | null;
   postsUser: Post[] = [];
@@ -36,11 +38,14 @@ export class UpdatePostComponent {
 
   buttonNewPost: boolean = false;
 
+  private userUpdateSubscription: Subscription = new Subscription();
+
   constructor(
     private userService: UserService,
     private userStateService: UserStateService,
     private listPostUserService: ListPostUserService,
-    private updatePostService: UpdatePostService
+    private updatePostService: UpdatePostService,
+    private userUpdateService: UserUpdateService
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +57,16 @@ export class UpdatePostComponent {
       ]),
     });
     this.fetchPostsUser(Number(this.currentUser?.id));
+
+    this.userUpdateSubscription = this.userUpdateService.userUpdate$.subscribe(
+      () => {
+        this.fetchPostsUser(Number(this.currentUser?.id));
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.userUpdateSubscription.unsubscribe();
   }
 
   get post() {
