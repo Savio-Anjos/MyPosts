@@ -39,11 +39,31 @@
           [nzAction]="actionTemplate1"
         ></nz-alert>
         <ng-template #actionTemplate1>
-          <button nz-button nzSize="small" nzType="text">
+          <button nz-button nzSize="small" nzType="text" (click)="showModal()">
             Ver Publicação
           </button></ng-template
         >
       </div>
+
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Detalhes da Postagem"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+        class="modal"
+        [nzBodyStyle]="{ 'background-color': ' rgba(37,99,235,1)' }"
+        [nzWidth]="'50rem'"
+        [nzWidth]="'600px'"
+      >
+        <ng-container *nzModalContent>
+          <h1><span class="categories">ID: </span>{{ updatedPost.id }}</h1>
+
+          <h1>
+            <span class="categories"> Updated Content: </span
+            >{{ updatedPost.body | capitalizeFirstLetter }}
+          </h1>
+        </ng-container>
+      </nz-modal>
 
       <div class="alert" *ngIf="alertError">
         <nz-alert

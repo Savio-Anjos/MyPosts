@@ -32,6 +32,7 @@ export class UpdatePostComponent {
 
   alertSucess: boolean = false;
   alertError: boolean = false;
+  isVisible = false;
 
   constructor(
     private userService: UserService,
@@ -92,5 +93,23 @@ export class UpdatePostComponent {
         console.error('Erro ao atualizar o post:', error);
       }
     );
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
+  changeButtonSubmit() {
+    this.alertSucess = false;
+    // this.buttonNewPost = false;
   }
 }
