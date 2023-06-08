@@ -41,7 +41,6 @@ export class UpdatePostComponent implements OnInit, OnDestroy {
   private userUpdateSubscription: Subscription = new Subscription();
 
   constructor(
-    private userService: UserService,
     private userStateService: UserStateService,
     private listPostUserService: ListPostUserService,
     private updatePostService: UpdatePostService,

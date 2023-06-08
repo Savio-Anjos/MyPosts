@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
+
 import { UserStateService } from 'src/app/shared/user-state.service';
+import { UserUpdateService } from 'src/app/shared/user-update.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
 import { ListService } from 'src/app/services/list.service';
 
@@ -13,7 +17,7 @@ import { ListService } from 'src/app/services/list.service';
     '../list/list.component.scss',
   ],
 })
-export class ListPostsUserComponent {
+export class ListPostsUserComponent implements OnInit, OnDestroy {
   user?: User | null;
   postsUser: Post[] = [];
   detailsPost: Post = {
@@ -23,14 +27,27 @@ export class ListPostsUserComponent {
   };
   isVisible = false;
 
+  private userUpdateSubscription: Subscription = new Subscription();
+
   constructor(
     private userStateService: UserStateService,
     private listPostUserService: ListPostUserService,
-    private listService: ListService
+    private listService: ListService,
+    private userUpdateService: UserUpdateService
   ) {}
 
   ngOnInit() {
     this.fetchPostsUser(Number(this.currentUser?.id));
+
+    this.userUpdateSubscription = this.userUpdateService.userUpdate$.subscribe(
+      () => {
+        this.fetchPostsUser(Number(this.currentUser?.id));
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.userUpdateSubscription.unsubscribe();
   }
 
   get currentUser(): User | null {
