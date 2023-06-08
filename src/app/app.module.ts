@@ -8,6 +8,7 @@ import { ListComponent } from './components/list/list.component';
 import { ListPostsUserComponent } from './components/list-posts-user/list-posts-user.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
+import { DeletePostComponent } from './components/delete-post/delete-post.component';
 
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -38,6 +39,7 @@ registerLocaleData(en);
     ListPostsUserComponent,
     CreatePostComponent,
     UpdatePostComponent,
+    DeletePostComponent,
   ],
   imports: [
     BrowserModule,
