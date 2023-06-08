@@ -30,6 +30,9 @@ export class UpdatePostComponent {
 
   error?: string;
 
+  alertSucess: boolean = false;
+  alertError: boolean = false;
+
   constructor(
     private userService: UserService,
     private userStateService: UserStateService,
@@ -80,10 +83,12 @@ export class UpdatePostComponent {
     this.updatePostService.updatePost(postId, body).subscribe(
       (result) => {
         this.updatedPost = result.updatePost;
+        this.alertSucess = true;
         console.log('Post atualizado:', this.updatedPost);
       },
       (error: ApolloError) => {
         this.error = error.message;
+        this.alertError = true;
         console.error('Erro ao atualizar o post:', error);
       }
     );
