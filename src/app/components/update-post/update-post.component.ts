@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApolloError } from '@apollo/client/core';
 import { Subscription } from 'rxjs';
 
-import { UserService } from 'src/app/shared/user.service';
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
 import { UpdatePostService } from 'src/app/services/update-post.service';

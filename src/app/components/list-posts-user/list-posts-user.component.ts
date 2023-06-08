@@ -67,10 +67,6 @@ export class ListPostsUserComponent implements OnInit, OnDestroy {
     });
   }
 
-  showPosts() {
-    this.fetchPostsUser(Number(this.currentUser?.id));
-  }
-
   showModal(id: number): void {
     this.fetchOnePost(id);
     this.isVisible = true;

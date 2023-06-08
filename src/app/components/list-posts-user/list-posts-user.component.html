@@ -1,13 +1,4 @@
 <div class="container">
-  <div class="area-title">
-    <h2>Clique aqui para visualizar as publicações do usuário conectado:</h2>
-    <div class="area-form">
-      <button nz-button nzType="primary" (click)="showPosts()">
-        Show Posts
-      </button>
-    </div>
-  </div>
-
   <div class="container-cards">
     <ul *ngFor="let post of postsUser">
       <nz-card
