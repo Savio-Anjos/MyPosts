@@ -34,6 +34,8 @@ export class UpdatePostComponent {
   alertError: boolean = false;
   isVisible = false;
 
+  buttonNewPost: boolean = false;
+
   constructor(
     private userService: UserService,
     private userStateService: UserStateService,
@@ -44,7 +46,10 @@ export class UpdatePostComponent {
   ngOnInit(): void {
     this.updateForm = new FormGroup({
       post: new FormControl('', [Validators.required]),
-      body: new FormControl('', [Validators.required]),
+      body: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
     });
     this.fetchPostsUser(Number(this.currentUser?.id));
   }
@@ -85,12 +90,14 @@ export class UpdatePostComponent {
       (result) => {
         this.updatedPost = result.updatePost;
         this.alertSucess = true;
+        this.buttonNewPost = true;
+        this.updateForm.reset();
         console.log('Post atualizado:', this.updatedPost);
       },
       (error: ApolloError) => {
+        console.error('Erro ao atualizar o post:', error);
         this.error = error.message;
         this.alertError = true;
-        console.error('Erro ao atualizar o post:', error);
       }
     );
   }
@@ -110,6 +117,6 @@ export class UpdatePostComponent {
 
   changeButtonSubmit() {
     this.alertSucess = false;
-    // this.buttonNewPost = false;
+    this.buttonNewPost = false;
   }
 }
