@@ -11,13 +11,6 @@
         "src": "/(.*)",
         "dest": "/index.html"
       }
-    ],
-    "public": true,
-    "env": {
-      "ANOTHER_VARIABLE": "value"
-    },
-    "build": {
-      "maxLambdaSize": "2mb"
-    }
+    ]
   }
   
