@@ -5,7 +5,12 @@
         >Selecione a postagem que deseja deletar:</label
       >
 
-      <select *ngIf="!buttonNewPost" id="posts" formControlName="post">
+      <select
+        *ngIf="!buttonNewPost"
+        id="posts"
+        formControlName="post"
+        (change)="searchPostId($event)"
+      >
         <option *ngFor="let post of postsUser" value="{{ post.id }}">
           {{ post.title | capitalizeFirstLetter }}
         </option>

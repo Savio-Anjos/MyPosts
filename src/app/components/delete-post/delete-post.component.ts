@@ -5,9 +5,11 @@ import { Subscription } from 'rxjs';
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
 import { UserUpdateService } from 'src/app/shared/user-update.service';
+import { DeletePostService } from 'src/app/services/delete-post.service';
 
 import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
+import { ApolloError } from '@apollo/client/core';
 @Component({
   selector: 'app-delete-post',
   templateUrl: './delete-post.component.html',
@@ -23,6 +25,8 @@ export class DeletePostComponent implements OnInit, OnDestroy {
   buttonNewPost: boolean = false;
   textButton: string = 'deletar publicação';
 
+  postId: number = 0;
+
   alertSucess: boolean = false;
   alertError: boolean = false;
 
@@ -31,7 +35,8 @@ export class DeletePostComponent implements OnInit, OnDestroy {
   constructor(
     private userStateService: UserStateService,
     private listPostUserService: ListPostUserService,
-    private userUpdateService: UserUpdateService
+    private userUpdateService: UserUpdateService,
+    private deletePostService: DeletePostService
   ) {}
 
   ngOnInit(): void {
@@ -66,14 +71,33 @@ export class DeletePostComponent implements OnInit, OnDestroy {
     });
   }
 
+  searchPostId(event: any) {
+    const value = event.target.value;
+    this.postId = Number(value);
+  }
+
   submit() {
     if (this.deleteForm.invalid) {
       return;
     }
 
-    this.buttonNewPost = true;
-    this.alertSucess = true;
-    this.textButton = 'deletar outra publicação';
+    const postId = this.postId;
+
+    this.deletePostService.deletePost(postId).subscribe(
+      (result) => {
+        if (result) {
+          this.buttonNewPost = true;
+          this.alertSucess = true;
+          this.alertError = false;
+          this.textButton = 'deletar outra publicação';
+          console.log(result.deletePost);
+        }
+      },
+      (error: ApolloError) => {
+        console.error('Erro ao deletar o post:', error);
+        this.alertError = true;
+      }
+    );
   }
 
   changeButtonSubmit() {

@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo, gql, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+interface DeletePostResponse {
+  deletePost: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class DeletePostService {
   constructor(private apollo: Apollo) {}
 
-  deletePost(id: number) {
+  deletePost(id: number): Observable<DeletePostResponse | null | undefined> {
     const mutation = gql`
       mutation DeletePost($id: ID!) {
         deletePost(id: $id)
@@ -17,7 +21,7 @@ export class DeletePostService {
     `;
 
     return this.apollo
-      .mutate({
+      .mutate<DeletePostResponse>({
         mutation,
         variables: {
           id,
