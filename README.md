@@ -18,7 +18,7 @@ Esse projeto está utilizando as seguintes tecnologias:
 ## 📜 Descrição
 
 Esse projeto foi desenvolvido utilizando angular para fins
-de aprendizagem. Nele é feito o consumo de uma [API](https://graphqlzero.almansi.me/#examples) Graphql. Todas as Queries e Mutations estão sendo
+de aprendizagem. Nele é feito o consumo de uma [API](https://graphqlzero.almansi.me/#examples) GraphQL. Todas as Queries e Mutations estão sendo
 utilizadas no projeto. Para melhorar o processo de estilização foi utilizado
 AntDesign(NG-ZORRO).
 
