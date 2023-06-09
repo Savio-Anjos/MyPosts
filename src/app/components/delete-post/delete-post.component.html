@@ -6,7 +6,9 @@
       >
 
       <select *ngIf="!buttonNewPost" id="posts" formControlName="post">
-        <option value="1">Teste</option>
+        <option *ngFor="let post of postsUser" value="{{ post.id }}">
+          {{ post.title | capitalizeFirstLetter }}
+        </option>
       </select>
 
       <div
