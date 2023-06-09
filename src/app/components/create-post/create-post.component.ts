@@ -21,7 +21,7 @@ export class CreatePostComponent {
     body: '',
   };
 
-  alertSucess: boolean = false;
+  alertSuccess: boolean = false;
   alertError: boolean = false;
   isVisible = false;
 
@@ -66,7 +66,7 @@ export class CreatePostComponent {
       ) => {
         this.postCreated = response.data.createPost;
         console.log('Post criado:', this.postCreated);
-        this.alertSucess = true;
+        this.alertSuccess = true;
         this.alertError = false;
         this.buttonNewPost = true;
         this.postForm.reset();
@@ -92,7 +92,7 @@ export class CreatePostComponent {
   }
 
   changeButtonSubmit() {
-    this.alertSucess = false;
+    this.alertSuccess = false;
     this.buttonNewPost = false;
   }
 }

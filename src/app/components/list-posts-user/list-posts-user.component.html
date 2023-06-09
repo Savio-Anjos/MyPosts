@@ -8,7 +8,15 @@
         class="card"
       >
         <h3>{{ post.title | capitalizeFirstLetter }}</h3>
-
+      </nz-card>
+      <ng-template #extraTemplate>
+        <a
+          class="link"
+          nz-button
+          [nzType]="'primary'"
+          (click)="showModal(post.id)"
+          >Details</a
+        >
         <nz-modal
           [(nzVisible)]="isVisible"
           nzTitle="Detalhes da Postagem"
@@ -31,15 +39,6 @@
             </h1>
           </ng-container>
         </nz-modal>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a
-          class="link"
-          nz-button
-          [nzType]="'primary'"
-          (click)="showModal(post.id)"
-          >Details</a
-        >
       </ng-template>
     </ul>
   </div>

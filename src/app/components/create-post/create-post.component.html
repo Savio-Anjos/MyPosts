@@ -13,7 +13,7 @@
       />
 
       <div
-        *ngIf="title.invalid && formDir.submitted && !alertSucess"
+        *ngIf="title.invalid && formDir.submitted && !alertSuccess"
         class="validation-error"
       >
         <p *ngIf="title.errors?.['required']">O título é obrigatório!</p>
@@ -33,7 +33,7 @@
       ></textarea>
 
       <div
-        *ngIf="body.invalid && formDir.submitted && !alertSucess"
+        *ngIf="body.invalid && formDir.submitted && !alertSuccess"
         class="validation-error"
       >
         <p *ngIf="body.errors?.['required']">O conteúdo é obrigatório!</p>
@@ -41,9 +41,8 @@
           O conteúdo deve conter no mínimo 10 caracteres!
         </p>
       </div>
-      <div class="alert" *ngIf="alertSucess">
+      <div class="alert" *ngIf="alertSuccess">
         <nz-alert
-          style="height: 10re[]"
           nzShowIcon
           nzType="success"
           nzMessage="Publicação criada com sucesso"
