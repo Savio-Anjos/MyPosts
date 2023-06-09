@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { UserStateService } from 'src/app/shared/user-state.service';
 import { ListPostUserService } from 'src/app/services/list-post-user.service';
+import { UserUpdateService } from 'src/app/shared/user-update.service';
 
 import { User } from 'src/app/User';
 import { Post } from 'src/app/Post';
@@ -14,7 +16,7 @@ import { Post } from 'src/app/Post';
     '../update-post/update-post.component.scss',
   ],
 })
-export class DeletePostComponent implements OnInit {
+export class DeletePostComponent implements OnInit, OnDestroy {
   deleteForm!: FormGroup;
   user?: User | null;
   postsUser: Post[] = [];
@@ -24,9 +26,12 @@ export class DeletePostComponent implements OnInit {
   alertSucess: boolean = false;
   alertError: boolean = false;
 
+  private userUpdateSubscription: Subscription = new Subscription();
+
   constructor(
     private userStateService: UserStateService,
-    private listPostUserService: ListPostUserService
+    private listPostUserService: ListPostUserService,
+    private userUpdateService: UserUpdateService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +39,16 @@ export class DeletePostComponent implements OnInit {
       post: new FormControl('', Validators.required),
     });
     this.fetchPostsUser(Number(this.currentUser?.id));
+
+    this.userUpdateSubscription = this.userUpdateService.userUpdate$.subscribe(
+      () => {
+        this.fetchPostsUser(Number(this.currentUser?.id));
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.userUpdateSubscription.unsubscribe();
   }
 
   get post() {
