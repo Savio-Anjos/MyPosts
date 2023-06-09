@@ -1,0 +1,23 @@
+.container-list-user-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3rem;
+    background: rgb(15, 23, 42);
+    background: linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 1) 0%,
+      rgba(0, 21, 41, 1) 50%,
+      rgba(15, 23, 42, 1) 100%
+    );
+    margin-right: 3rem;
+    flex-wrap: wrap;
+    border-radius: 2rem;
+    overflow: auto;
+    height: 39rem;
+    margin-top: 3rem;
+  }
+
+  .container-list-user-cards::-webkit-scrollbar {
+    width: 0.1em;
+  }

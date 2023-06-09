@@ -1,4 +1,4 @@
-.container-cards {
+.container-list-cards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -18,7 +18,7 @@
   margin-top: 3rem;
 }
 
-.container-cards::-webkit-scrollbar {
+.container-list-cards::-webkit-scrollbar {
   width: 0.1em;
 }
 
