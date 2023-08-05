@@ -18,5 +18,17 @@ describe('MyPost Test', () => {
     cy.get('a[routerlink="/welcome/userPosts"]')
       .contains('Listar publicações do usuário conectado')
       .click();
+
+    //Página de listagem de postagens de cada usuário
+
+    cy.get('svg[data-icon="user-switch"]').click();
+
+    cy.wait(2000);
+
+    cy.get('svg[data-icon="user-switch"]').click();
+
+    cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('Dashboard').click();
   });
 });
