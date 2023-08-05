@@ -65,6 +65,40 @@ describe('MyPost Test', () => {
 
     cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
 
-    cy.get('a[routerlink="/welcome/updatePosts"]');
+    cy.get('a[routerlink="/welcome/updatePosts"]')
+
+      //Página de Atualização de Posts
+      .contains('Atualizar Publicação')
+      .click();
+
+    cy.get('select[id="posts"]').select([1]);
+
+    cy.get(
+      'textarea[class="ng-untouched ng-pristine ng-invalid ng-star-inserted"]'
+    ).type('Novo conteúdo da publicação');
+
+    cy.get('span[class="ng-star-inserted"]')
+      .contains('Atualizar Publicação')
+      .parents('button[class="ant-btn ant-btn-primary ng-star-inserted"]')
+      .click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('Ver Publicação').click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('Cancel').click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('Ver Publicação').click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('OK').click();
+
+    cy.get('span[class="ng-star-inserted"]')
+      .contains('Nova Publicação')
+      .parents(
+        'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
+      )
+      .click();
+
+    cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
+
+    cy.get('a[routerlink="/welcome/deletePosts"]');
   });
 });
