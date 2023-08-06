@@ -99,6 +99,32 @@ describe('MyPost Test', () => {
 
     cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
 
-    cy.get('a[routerlink="/welcome/deletePosts"]');
+    cy.get('a[routerlink="/welcome/deletePosts"]')
+      .contains('Deletar Publicação')
+      .click();
+
+    //Página de Deletar Posts
+
+    cy.get('select[id="posts"]').select([1]);
+
+    cy.get(
+      'button[class="ant-btn button-delete ant-btn-primary ng-star-inserted"]'
+    )
+      .contains('Deletar Publicação')
+      .click();
+
+    cy.get(
+      'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
+    )
+      .contains('Deletar Outra Publicação')
+      .click();
+
+    cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
+
+    cy.get('div[ng-reflect-nz-title="Modify Posts"]')
+      .filter('.ant-menu-submenu-title')
+      .click();
+
+    cy.get('span[class="ng-star-inserted"]').contains('Dashboard').click();
   });
 });
