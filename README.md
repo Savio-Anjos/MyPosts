@@ -14,6 +14,7 @@ Esse projeto está utilizando as seguintes tecnologias:
 - [Angular](https://angular.io/)
 - [ApolloClient](https://www.apollographql.com/)
 - [AntDesign](https://ng.ant.design/docs/introduce/en)
+- [Cypress](https://www.cypress.io/)
 
 ## 📜 Descrição
 
