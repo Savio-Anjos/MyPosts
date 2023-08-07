@@ -27,10 +27,16 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li
+        data-cy="menu-dashboard"
+        nz-submenu
+        nzOpen
+        nzTitle="Dashboard"
+        nzIcon="dashboard"
+      >
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a data-cy="nav-welcome" routerLink="/welcome">Welcome</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/welcome/list">List All Posts</a>

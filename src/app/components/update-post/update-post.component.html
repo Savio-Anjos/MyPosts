@@ -56,7 +56,13 @@
           [nzAction]="actionTemplate1"
         ></nz-alert>
         <ng-template #actionTemplate1>
-          <button nz-button nzSize="small" nzType="text" (click)="showModal()">
+          <button
+            data-cy="btn-see-update-post"
+            nz-button
+            nzSize="small"
+            nzType="text"
+            (click)="showModal()"
+          >
             Ver Publicação
           </button></ng-template
         >
@@ -99,7 +105,12 @@
         <ng-template #actionTemplate2> </ng-template>
       </div>
 
-      <button nz-button nzType="primary" *ngIf="!buttonNewPost">
+      <button
+        data-cy="btn-see-post"
+        nz-button
+        nzType="primary"
+        *ngIf="!buttonNewPost"
+      >
         Atualizar Publicação
       </button>
 

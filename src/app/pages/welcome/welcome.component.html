@@ -9,25 +9,33 @@
       <h1>O que você deseja fazer?</h1>
       <div class="view-posts">
         <div class="link">
-          <a routerLink="/welcome/list">Listar todas as publicações</a>
+          <a data-cy="link-all-posts" routerLink="/welcome/list"
+            >Listar todas as publicações</a
+          >
         </div>
 
         <div class="link">
-          <a routerLink="/welcome/userPosts"
+          <a data-cy="link-user-posts" routerLink="/welcome/userPosts"
             >Listar publicações do usuário conectado</a
           >
         </div>
       </div>
 
       <div class="link">
-        <a routerLink="/welcome/createPosts">Criar Publicação</a>
+        <a data-cy="link-create-posts" routerLink="/welcome/createPosts"
+          >Criar Publicação</a
+        >
       </div>
 
       <div class="link">
-        <a routerLink="/welcome/updatePosts">Atualizar Publicação</a>
+        <a data-cy="link-update-posts" routerLink="/welcome/updatePosts"
+          >Atualizar Publicação</a
+        >
       </div>
       <div class="link">
-        <a routerLink="/welcome/deletePosts">Deletar Publicação</a>
+        <a data-cy="link-delete-posts" routerLink="/welcome/deletePosts"
+          >Deletar Publicação</a
+        >
       </div>
     </div>
   </div>

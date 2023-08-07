@@ -4,9 +4,11 @@ describe('MyPost Test', () => {
 
     it('Página de listagem', () => {
       cy.visit('/');
-      cy.get('a[routerlink="/welcome/list"]')
-        .contains('Listar todas as publicações')
-        .click();
+      cy.get('a[data-cy="link-all-posts"]').click();
+
+      cy.get('input[class="ng-untouched ng-pristine ng-valid"').should(
+        'be.visible'
+      );
 
       cy.get('input[class="ng-untouched ng-pristine ng-valid"').invoke(
         'val',
@@ -16,12 +18,9 @@ describe('MyPost Test', () => {
       cy.wait(1000);
 
       cy.get('button[class="ant-btn ant-btn-primary"]').click();
+      cy.get('a[data-cy="nav-welcome"]').click();
 
-      cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
-
-      cy.get('a[routerlink="/welcome/userPosts"]')
-        .contains('Listar publicações do usuário conectado')
-        .click();
+      cy.get('a[data-cy="link-user-posts"]').click();
     });
 
     //Página de listagem de postagens de cada usuário
@@ -33,18 +32,15 @@ describe('MyPost Test', () => {
       cy.wait(2000);
 
       cy.get('svg[data-icon="user-switch"]').click();
+      cy.get('a[data-cy="nav-welcome"]').click();
 
-      cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
-
-      cy.get('span[class="ng-star-inserted"]').contains('Dashboard').click();
+      cy.get('a[data-cy="nav-welcome"]').click();
     });
 
     //Página de criação de Posts
     it('Página de criação de Posts', () => {
       cy.visit('/');
-      cy.get('a[routerlink="/welcome/createPosts"]')
-        .contains('Criar Publicação')
-        .click();
+      cy.get('a[data-cy="link-create-posts"]').click();
 
       cy.get('input[id="title"]')
         .filter('.ng-untouched')
@@ -58,43 +54,34 @@ describe('MyPost Test', () => {
         'button[class="ant-btn ant-btn-primary ng-star-inserted"]'
       ).click();
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Ver Publicação')
-        .click();
+      cy.get('button[data-cy="btn-see-create-post"]').click();
 
-      cy.get('span[class="ng-star-inserted"]').contains('Cancel').click();
+      cy.get('button[class="ant-btn ng-star-inserted"]').click();
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Ver Publicação')
-        .click();
+      cy.get('button[data-cy="btn-see-create-post"]').click();
 
-      cy.get('span[class="ng-star-inserted"]').contains('OK').click();
+      cy.get(
+        'button[class="ant-btn ant-btn-primary ng-star-inserted"]'
+      ).click();
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Nova Publicação')
-        .parents(
-          'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
-        )
-        .click();
-      cy.get('span[class="ng-star-inserted"]').contains('Dashboard').click();
+      cy.get(
+        'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
+      ).click();
+      cy.get('li[data-cy="menu-dashboard"]').click();
 
-      cy.get('a[routerlink="/welcome"]')
-        .contains('Welcome')
-        .click({ force: true });
+      cy.get('a[data-cy="nav-welcome"]').click({ force: true });
 
-      cy.get('a[routerlink="/welcome/updatePosts"]');
+      cy.get('a[data-cy="link-update-posts"]').click();
     });
 
     //Página de Atualização de Posts
 
     it('Página de Atualização de Posts', () => {
       cy.visit('/welcome/updatePosts');
-      cy.contains('Atualizar Publicação').click();
 
       cy.wait(1000);
 
       cy.get('span[class="ng-star-inserted"]')
-        .contains('Atualizar Publicação')
         .parents('button[class="ant-btn ant-btn-primary ng-star-inserted"]')
         .click();
 
@@ -111,36 +98,28 @@ describe('MyPost Test', () => {
       cy.get('textarea[formcontrolname]').type('Novo conteúdo da publicação');
 
       cy.get('span[class="ng-star-inserted"]')
-        .contains('Atualizar Publicação')
         .parents('button[class="ant-btn ant-btn-primary ng-star-inserted"]')
         .click();
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Ver Publicação')
-        .click();
+      cy.get('button[data-cy="btn-see-post"]').click();
+      cy.get('button[data-cy="btn-see-update-post"]').click();
 
-      cy.get('span[class="ng-star-inserted"]').contains('Cancel').click();
+      cy.get('button[class="ant-btn ng-star-inserted"]').click();
 
       cy.wait(500);
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Ver Publicação')
-        .click();
+      cy.get('button[data-cy="btn-see-update-post"]').click();
 
-      cy.get('span[class="ng-star-inserted"]').contains('OK').click();
+      cy.get(
+        'button[class="ant-btn ant-btn-primary ng-star-inserted"]'
+      ).click();
 
-      cy.get('span[class="ng-star-inserted"]')
-        .contains('Nova Publicação')
-        .parents(
-          'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
-        )
-        .click();
+      cy.get(
+        'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
+      ).click();
+      cy.get('a[data-cy="nav-welcome"]').click();
 
-      cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
-
-      cy.get('a[routerlink="/welcome/deletePosts"]')
-        .contains('Deletar Publicação')
-        .click();
+      cy.get('a[data-cy="link-delete-posts"]').click();
     });
 
     //Página de Deletar Posts
@@ -159,14 +138,13 @@ describe('MyPost Test', () => {
       cy.get(
         'button[class="ant-btn button-delete ant-btn-primary ng-star-inserted"]'
       ).click();
-
-      cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
+      cy.get('a[data-cy="nav-welcome"]').click();
 
       cy.get('div[ng-reflect-nz-title="Modify Posts"]')
         .filter('.ant-menu-submenu-title')
         .click();
 
-      cy.get('span[class="ng-star-inserted"]').contains('Dashboard').click();
+      cy.get('a[data-cy="nav-welcome"]').click();
     });
   });
 });
