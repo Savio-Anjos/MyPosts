@@ -1,6 +1,7 @@
 describe('MyPost Test', () => {
   describe('Full Test', () => {
     //Página de listagem
+
     it('Página de listagem', () => {
       cy.visit('/');
       cy.get('a[routerlink="/welcome/list"]')
@@ -85,16 +86,29 @@ describe('MyPost Test', () => {
     });
 
     //Página de Atualização de Posts
+
     it('Página de Atualização de Posts', () => {
       cy.visit('/welcome/updatePosts');
       cy.contains('Atualizar Publicação').click();
 
       cy.wait(1000);
-      cy.get('select[id="posts"]').select([1]);
 
-      cy.get(
-        'textarea[class="ng-untouched ng-pristine ng-invalid ng-star-inserted"]'
-      ).type('Novo conteúdo da publicação');
+      cy.get('span[class="ng-star-inserted"]')
+        .contains('Atualizar Publicação')
+        .parents('button[class="ant-btn ant-btn-primary ng-star-inserted"]')
+        .click();
+
+      cy.get('p[class="ng-star-inserted"]').should('be.visible');
+
+      cy.get('select[formcontrolname="post"]').select([1]);
+
+      cy.get('p[class="ng-star-inserted"]').should('be.visible');
+
+      cy.get('textarea[formcontrolname]').type('a');
+
+      cy.get('p[class="ng-star-inserted"]').should('be.visible');
+
+      cy.get('textarea[formcontrolname]').type('Novo conteúdo da publicação');
 
       cy.get('span[class="ng-star-inserted"]')
         .contains('Atualizar Publicação')
@@ -130,21 +144,21 @@ describe('MyPost Test', () => {
     });
 
     //Página de Deletar Posts
+
     it('Página de Deletar Posts', () => {
       cy.visit('/welcome/deletePosts');
-      cy.get('select[id="posts"]').select([1]);
 
       cy.get(
         'button[class="ant-btn button-delete ant-btn-primary ng-star-inserted"]'
-      )
-        .contains('Deletar Publicação')
-        .click();
+      ).click();
+
+      cy.get('p[class="ng-star-inserted"]').should('be.visible');
+
+      cy.get('select[formcontrolname="post"]').select([1]);
 
       cy.get(
-        'button[class="ant-btn button-new-post ant-btn-primary ng-star-inserted"]'
-      )
-        .contains('Deletar Outra Publicação')
-        .click();
+        'button[class="ant-btn button-delete ant-btn-primary ng-star-inserted"]'
+      ).click();
 
       cy.get('a[routerlink="/welcome"]').contains('Welcome').click();
 
